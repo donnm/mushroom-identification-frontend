@@ -1,0 +1,5 @@
+# Scripts and configs are executed inside Linux containers. A CRLF line ending
+# on the shebang line makes the script fail with "no such file or directory".
+*.sh text eol=lf
+*.template text eol=lf
+Dockerfile text eol=lf

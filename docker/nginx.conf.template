@@ -1,0 +1,97 @@
+# Served by the official nginx image, which runs envsubst over this file at
+# container start. Only BACKEND_* variables are substituted (see the
+# NGINX_ENVSUBST_FILTER setting in the Dockerfile), so nginx's own $variables
+# survive untouched.
+
+# Docker's embedded DNS server. Resolving through it, combined with passing the
+# upstream via a variable below, means the hostname is looked up per request
+# instead of once at startup. Without this nginx refuses to start when the
+# backend is not up yet, and keeps proxying to a stale IP after the backend
+# container is recreated on an upgrade.
+resolver 127.0.0.11 ipv6=off valid=10s;
+
+# Behind Cloudflare the request reaches nginx over plain http, but the client
+# used https. Prefer the proxy's X-Forwarded-Proto and fall back to our own
+# scheme when there is no proxy in front.
+map $http_x_forwarded_proto $client_proto {
+    default $http_x_forwarded_proto;
+    ''      $scheme;
+}
+
+server {
+    listen 8080;
+    server_name _;
+
+    root /usr/share/nginx/html;
+    index index.html;
+
+    # Matches the 10MB per-image limit enforced by the backend, with room for
+    # a few images in one request
+    client_max_body_size 60m;
+
+    gzip on;
+    gzip_vary on;
+    gzip_min_length 1024;
+    gzip_types text/plain text/css application/javascript application/json image/svg+xml;
+
+    # proxy_pass through a variable skips nginx's automatic URI handling, so
+    # $request_uri has to be appended explicitly to keep path and query string
+    set $backend ${BACKEND_ORIGIN};
+
+    # --- API and auth -------------------------------------------------------
+    location ~ ^/(api|auth)/ {
+        proxy_pass $backend$request_uri;
+        proxy_set_header Host              $host;
+        proxy_set_header X-Real-IP         $remote_addr;
+        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $client_proto;
+        proxy_set_header X-Forwarded-Host  $host;
+        # PDF and CSV exports can take a while on large date ranges
+        proxy_read_timeout 300s;
+    }
+
+    # --- STOMP over SockJS --------------------------------------------------
+    location /ws {
+        proxy_pass $backend$request_uri;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade           $http_upgrade;
+        proxy_set_header Connection        "upgrade";
+        proxy_set_header Host              $host;
+        proxy_set_header X-Real-IP         $remote_addr;
+        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $client_proto;
+        # Sockets are long lived; the STOMP heartbeat is every 10s
+        proxy_read_timeout 3600s;
+        proxy_send_timeout 3600s;
+        # SockJS falls back to xhr-streaming when websockets are blocked, and
+        # that fallback breaks if nginx buffers the response
+        proxy_buffering off;
+    }
+
+    # --- Static assets ------------------------------------------------------
+
+    # Runtime configuration, rewritten on every container start
+    location = /env.js {
+        add_header Cache-Control "no-store" always;
+    }
+
+    # /assets/ holds two kinds of file: Vite's build output, which carries an
+    # 8-character content hash before the extension, and everything copied
+    # verbatim from public/assets/, which keeps a stable name. Only the hashed
+    # ones can safely be cached forever - pinning logo-simplified.svg for a year
+    # would outlive any redesign. The rest fall through and get revalidated
+    # against nginx's ETag, which costs one 304 per file.
+    location ~ "^/assets/.+-[A-Za-z0-9_-]{8}\.(js|css|woff2?|ttf|svg|png|jpe?g|gif|webp|avif)$" {
+        add_header Cache-Control "public, max-age=31536000, immutable" always;
+    }
+
+    # index.html must not be cached, or clients keep loading an old bundle
+    location = /index.html {
+        add_header Cache-Control "no-cache" always;
+    }
+
+    # vue-router uses history mode, so unknown paths are app routes
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}

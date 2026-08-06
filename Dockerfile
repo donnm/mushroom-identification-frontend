@@ -1,5 +1,7 @@
+# syntax=docker/dockerfile:1
+
 # --- Builder Stage ---
-FROM node:18 AS builder
+FROM node:22-alpine AS builder
 
 WORKDIR /app
 
@@ -14,22 +16,21 @@ COPY . .
 RUN npm run build
 
 # --- Production Stage ---
-FROM node:18-slim
+# nginx serves the static bundle and reverse proxies /api, /auth and /ws to the
+# backend, so the whole app is reachable through a single origin and the browser
+# never makes a cross-origin request.
+FROM nginx:1.27-alpine
 
-# Install serve for static file hosting
-RUN npm install -g serve
+COPY --from=builder /app/dist /usr/share/nginx/html
 
-WORKDIR /app
-
-# Copy built app
-COPY --from=builder /app/dist ./
+# The nginx entrypoint expands templates/*.template with envsubst before start.
+# The filter keeps it from touching nginx's own $variables.
+COPY docker/nginx.conf.template /etc/nginx/templates/default.conf.template
+ENV NGINX_ENVSUBST_FILTER="^BACKEND_"
+ENV BACKEND_ORIGIN="http://backend:8080"
 
 # Script that injects environment variables into env.js
-COPY ./runtime-env.sh /app/runtime-env.sh
-RUN chmod +x /app/runtime-env.sh
+COPY runtime-env.sh /docker-entrypoint.d/10-runtime-env.sh
+RUN chmod +x /docker-entrypoint.d/10-runtime-env.sh
 
-# Expose port
 EXPOSE 8080
-
-# Entry point: generate env.js and serve app
-CMD ["/bin/sh", "-c", "./runtime-env.sh && serve -s . -l 8080"]
