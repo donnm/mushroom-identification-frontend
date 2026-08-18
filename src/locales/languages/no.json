@@ -78,7 +78,7 @@
       "downloadPdf": "Last ned PDF"
     },
     "adminDashboard": {
-      "greeting": "Hei {name} 👋",
+      "greeting": "Hei {name}",
       "welcome": "Velkommen til adminpanelet. Her får du oversikt over forespørsler og snarveier til det viktigste du gjør.",
       "tips": {
         "tip1": "Trykk \"Hent neste fra kø\" for å starte en ny vurdering.",
@@ -135,7 +135,7 @@
     "introBullet3": "Du skal skrive en kort kommentar om funnet ditt.",
     "introBullet4": "Etter innsending får du en referansekode for å følge med på rapporten.",
     "introBullet5": "En ekte ekspert vurderer innsendingen og sender deg svar.",
-    "startButton": "Jeg forstår – Start",
+    "startButton": "Jeg forstår - Start",
     "title": "Send inn en soppforespørsel",
     "upload": "Last opp bilde",
     "changeUpload": "Endre bilde",
@@ -150,7 +150,7 @@
     "next": "Neste",
     "finish": "Fullfør",
     "thankYou": "Takk!",
-    "thankYouHint": "Du får svar så snart en ekspert har sett på bildene dine. Du kan også sjekke med en gang ved å gå til «Se Svar» i sidemenyen og skrive inn referansekoden din.",
+    "thankYouHint": "Du får svar så snart en ekspert har sett på bildene dine. Du kan også sjekke med en gang ved å gå til \"Se Svar\" i sidemenyen og skrive inn referansekoden din.",
     "toFront": "Gå til forsiden",
     "mushroom": "Sopp",
     "noMushrooms": "Ingen sopper lagt til ennå.",
@@ -178,7 +178,7 @@
       },
       {
         "title": "Våre eksperter vurderer bildene dine",
-        "hint": "Du får svar innen 1–2 dager. Bruk referansekoden for å sjekke tilbake."
+        "hint": "Du får svar innen 1-2 dager. Bruk referansekoden for å sjekke tilbake."
       }
     ],
     "stepDescription": {
@@ -187,7 +187,7 @@
       "under": "Bilde av undersiden av soppen. Dette viser skivene eller porene."
     },
     "validation": {
-      "errorMushroomMissing": "Du må legge til minst én sopp før du kan sende inn.",
+      "errorMushroomMissing": "Du må legge til minst en sopp før du kan sende inn.",
       "errorCommentMissing": "Vennligst legg til en kort kommentar."
     }
   },
@@ -251,15 +251,15 @@
     "or": "Eller"
   },
   "membership": {
-    "title": "Bli medlem – Støtt Foreningen for Tryggere Ruspolitikk!",
+    "title": "Bli medlem - Støtt Foreningen for Tryggere Ruspolitikk!",
     "intro": "Vil du bidra til å holde Soppidentifikasjon.no i drift og hjelpe flere med trygg soppplukking? Som medlem støtter du vårt arbeid med å dekke driftskostnader og honorarer til våre soppsakkyndige.",
     "whyTitle": "Hvorfor bli medlem?",
-    "why1": "🌱 <strong>Støtt driften:</strong> Bidra til vedlikehold av siden og vår gratis identifikasjonstjeneste.",
-    "why2": "🍄 <strong>Lær mer om sopp:</strong> Få tilgang til eksklusivt innhold om soppidentifikasjon, matsopp og forvekslingsarter.",
-    "why3": "🧐 <strong>Bli soppsakkyndig:</strong> Medlemmer kan søke om å bli en del av vårt team av soppsakkyndige og hjelpe andre.",
+    "why1": "<strong>Støtt driften:</strong> Bidra til vedlikehold av siden og vår gratis identifikasjonstjeneste.",
+    "why2": "<strong>Lær mer om sopp:</strong> Få tilgang til eksklusivt innhold om soppidentifikasjon, matsopp og forvekslingsarter.",
+    "why3": "<strong>Bli soppsakkyndig:</strong> Medlemmer kan søke om å bli en del av vårt team av soppsakkyndige og hjelpe andre.",
     "typesTitle": "Medlemskapstyper",
-    "type1": "💛 <strong>Støttemedlem:</strong> Bidra økonomisk og få tilgang til medlemseksklusivt innhold.",
-    "type2": "🔬 <strong>Soppsakkyndig medlem:</strong> For deg med erfaring og kunnskap, som ønsker å identifisere sopper.",
+    "type1": "<strong>Støttemedlem:</strong> Bidra økonomisk og få tilgang til medlemseksklusivt innhold.",
+    "type2": "<strong>Soppsakkyndig medlem:</strong> For deg med erfaring og kunnskap, som ønsker å identifisere sopper.",
     "closing": "Sammen gjør vi soppidentifikasjon tryggere for alle! Bli medlem i dag og støtt vårt arbeid.",
     "cta": "Meld deg inn her"
   },
@@ -269,7 +269,7 @@
     "faqTitle": "Vanlige spørsmål",
     "faq1": {
       "question": "Hvordan fungerer soppidentifikasjonstjenesten?",
-      "answer": "Du sender inn bilder og får svar innen 1–2 dager."
+      "answer": "Du sender inn bilder og får svar innen 1-2 dager."
     },
     "faq2": {
       "question": "Hvordan bruker jeg referansekoden min?",
@@ -308,7 +308,7 @@
     "invalidEmail": "Vennligst oppgi en gyldig e-postadresse.",
     "missingOldPassword": "Vennligst skriv inn ditt nåværende passord for å endre passordet.",
     "passwordMismatch": "Passordene samsvarer ikke.",
-    "invalidPasswordFormat": "Passordet må være mellom 8 og 50 tegn, inneholde én stor bokstav, ett tall og ikke inneholde mellomrom.",
+    "invalidPasswordFormat": "Passordet må være mellom 8 og 50 tegn, inneholde en stor bokstav, ett tall og ikke inneholde mellomrom.",
     "profileUpdateFailed": "Klarte ikke å oppdatere profilen. Vennligst prøv igjen.",
     "passwordChangeFailed": "Klarte ikke å endre passordet. Vennligst prøv igjen.",
     "failedToLoadProfile": "Klarte ikke å laste inn profilinformasjonen din.",
@@ -356,7 +356,7 @@
     "logout": "Logg ut"
   },
   "basketBadge": {
-    "TOXIC_MUSHROOM_PRESENT": "Advarsel: Denne kurven inneholder minst én giftig sopp",
+    "TOXIC_MUSHROOM_PRESENT": "Advarsel: Denne kurven inneholder minst en giftig sopp",
     "PSYCHOACTIVE_MUSHROOM_PRESENT": "Denne kurven inneholder psykoaktive sopper",
     "UNIDENTIFIABLE_MUSHROOM_PRESENT": "Noen av soppene i denne kurven kunne ikke identifiseres",
     "NON_PSILOCYBIN_MUSHROOM_PRESENT": "Inneholder ikke-psilocybin-sopper",
@@ -405,7 +405,7 @@
     "passwordTooLong": "Passordet kan være maks 50 tegn.",
     "passwordNoSpaces": "Passordet kan ikke inneholde mellomrom.",
     "passwordNoNumber": "Passordet må inneholde minst ett tall.",
-    "passwordNoUppercase": "Passordet må inneholde minst én stor bokstav.",
+    "passwordNoUppercase": "Passordet må inneholde minst en stor bokstav.",
     "passwordsDontMatch": "Passordene er ikke like."
 
   }

@@ -1,18 +1,14 @@
 ### How does the service work?
 
-You upload photos of your mushrooms, and one of our mushroom experts reviews them and gives you feedback based on visible characteristics – completely free, and without judgment.
+You upload photos of your mushrooms, and one of our mushroom experts reviews them and gives you feedback based on visible characteristics - completely free, and without judgment.
 
 ### How long does it take to get a response?
 
-We usually respond within 1–2 business days. During peak season, like early autumn, it can take a bit longer – we're working through requests as fast as we can.
+We usually respond within 1-2 business days. During peak season, like early autumn, it can take a bit longer - we're working through requests as fast as we can.
 
 ### Do I need to register?
 
 No. You can submit completely anonymously. If you create an account, you'll also get access to your history and faster follow-up.
-
-### How do I log in?
-
-[Log in here](/user/login) if you already have an account. If not, you can create one during login.
 
 ### What happens after I submit?
 
@@ -20,4 +16,4 @@ You'll receive a reference code. Use it to retrieve your response once the asses
 
 ### Is the assessment 100% certain?
 
-No. The assessment is based on photos and visible features, and should never be your sole basis for eating a mushroom. If you're unsure – leave it be.
+No. The assessment is based on photos and visible features, and should never be your sole basis for eating a mushroom. If you're unsure - leave it be.

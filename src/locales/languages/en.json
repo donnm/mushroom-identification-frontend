@@ -79,7 +79,7 @@
       "downloadPdf": "Download PDF"
     },
     "adminDashboard": {
-      "greeting": "Hi {name} 👋",
+      "greeting": "Hi {name}",
       "welcome": "Welcome to the admin panel. Here you get an overview of requests and shortcuts to your most important tasks.",
       "tips": {
         "tip1": "Click \"Next in queue\" to start a new evaluation.",
@@ -136,7 +136,7 @@
     "introBullet3": "You'll write a short comment about your find.",
     "introBullet4": "After submission, you'll receive a reference code to track your report.",
     "introBullet5": "A real expert will review your submission and send a response.",
-    "startButton": "I understand – Start",
+    "startButton": "I understand - Start",
     "title": "Submit your mushroom inquiry",
     "upload": "Upload image",
     "changeUpload": "Change image",
@@ -159,7 +159,7 @@
     "step": "Step",
     "of": "of",
     "readyQuestion": "Are you ready to proceed?",
-    "readyDetail": "Once you continue, you won’t be able to return to this step.",
+    "readyDetail": "Once you continue, you won't be able to return to this step.",
     "proceedButton": "Yes, continue",
     "cancel": "Cancel",
     "copy": "Copy",
@@ -175,11 +175,11 @@
       },
       {
         "title": "Remember the reference code after submission",
-        "hint": "You’ll receive a reference code when you submit. Use this code to check your results later."
+        "hint": "You'll receive a reference code when you submit. Use this code to check your results later."
       },
       {
         "title": "Our experts will review your photos",
-        "hint": "You'll get a response within 1–2 days. Use the reference code to check back."
+        "hint": "You'll get a response within 1-2 days. Use the reference code to check back."
       }
     ],
     "stepDescription": {
@@ -241,7 +241,7 @@
     "button": "Log In",
     "errorEmpty": "Please enter your reference code.",
     "errorInvalid": "Invalid or expired reference code.",
-    "noCodeQuestion": "Don’t have a code?",
+    "noCodeQuestion": "Don't have a code?",
     "homeLink": "Go back to homepage"
   },
   "home": {
@@ -252,25 +252,25 @@
     "or": "Or"
   },
   "membership": {
-    "title": "Become a Member – Support Tryggere Ruspolitikk!",
+    "title": "Become a Member - Support Tryggere Ruspolitikk!",
     "intro": "Would you like to help keep Soppidentifikasjon.no running and assist others with safe mushroom picking? As a member, you support our work in covering operational costs and compensating our mushroom experts.",
     "whyTitle": "Why Become a Member?",
-    "why1": "🌱 <strong>Support the platform:</strong> Help maintain the website and keep our identification service free.",
-    "why2": "🍄 <strong>Learn about mushrooms:</strong> Gain access to exclusive content on mushroom identification, edible species, and lookalikes.",
-    "why3": "🧐 <strong>Become an expert:</strong> Members can apply to join our team of mushroom experts and assist others in safe identification.",
+    "why1": "<strong>Support the platform:</strong> Help maintain the website and keep our identification service free.",
+    "why2": "<strong>Learn about mushrooms:</strong> Gain access to exclusive content on mushroom identification, edible species, and lookalikes.",
+    "why3": "<strong>Become an expert:</strong> Members can apply to join our team of mushroom experts and assist others in safe identification.",
     "typesTitle": "Membership Types",
-    "type1": "💛 <strong>Supporter:</strong> Contribute financially and get access to exclusive member content.",
-    "type2": "🔬 <strong>Expert Member:</strong> For those with experience and knowledge, willing to identify mushrooms for our users.",
+    "type1": "<strong>Supporter:</strong> Contribute financially and get access to exclusive member content.",
+    "type2": "<strong>Expert Member:</strong> For those with experience and knowledge, willing to identify mushrooms for our users.",
     "closing": "Together, we make mushroom identification safer for everyone! Become a member today and support our mission.",
     "cta": "Join Now"
   },
   "support": {
     "title": "Need help?",
-    "intro": "Here you’ll find answers to common questions and how to contact us.",
+    "intro": "Here you'll find answers to common questions and how to contact us.",
     "faqTitle": "Frequently Asked Questions",
     "faq1": {
       "question": "How does the mushroom identification service work?",
-      "answer": "You upload photos and receive a response within 1–2 days."
+      "answer": "You upload photos and receive a response within 1-2 days."
     },
     "faq2": {
       "question": "How do I use my reference code?",
@@ -300,7 +300,7 @@
     "invalidEmail": "Please enter a valid email address.",
     "missingOldPassword": "Please enter your current password to change your password.",
     "passwordMismatch": "Passwords do not match.",
-    "invalidPasswordFormat": "Password must be 8–50 characters long, include one uppercase letter, one number, and contain no spaces.",
+    "invalidPasswordFormat": "Password must be 8-50 characters long, include one uppercase letter, one number, and contain no spaces.",
     "profileUpdateFailed": "Failed to update profile. Please try again.",
     "passwordChangeFailed": "Failed to change password. Please try again.",
     "failedToLoadProfile": "Failed to load your profile information.",

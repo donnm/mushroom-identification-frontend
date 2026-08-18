@@ -23,7 +23,7 @@ describe('New Request Process - Full Flow (StepZero to StepThree)', () => {
 
   it('should go through the entire new request process (StepZero to StepThree)', () => {
     // StepZero - Start the process
-    cy.get('button').contains('I understand – Start').click(); // Click the start button
+    cy.get('button').contains('I understand - Start').click(); // Click the start button
 
     // Verify StepZero content (this should be visible now)
     cy.get('h2').contains('Submit your mushroom inquiry').should('exist'); // Check StepOne title
