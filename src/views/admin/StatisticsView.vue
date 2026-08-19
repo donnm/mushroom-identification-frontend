@@ -40,7 +40,7 @@ import { useToast } from "vue-toastification";
 
 const columns = [
   { label: 'Request ID', key: 'userRequestId', class: 'col-span-5' },
-  { label: 'Last Updated', key: 'updatedAt', class: 'col-span-3' },
+  { label: 'Last updated', key: 'updatedAt', class: 'col-span-3' },
   { label: 'Status', key: 'status', class: 'col-span-3' },
   { label: 'Mushrooms', key: 'numberOfMushrooms', class: 'col-span-1' }
 ]

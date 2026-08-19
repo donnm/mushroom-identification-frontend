@@ -60,9 +60,9 @@
     "stats": {
       "completedTitle": "Daglig fullførte forespørseler",
       "mushroomCategories": "Soppkategorier",
-      "last7Days": "Siste 7 Dager",
-      "last30Days": "Siste 30 Dager",
-      "last90Days": "Siste 90 Dager",
+      "last7Days": "Siste 7 dager",
+      "last30Days": "Siste 30 dager",
+      "last90Days": "Siste 90 dager",
       "weeklyRate": "Gjeldene ukentlig nye forespørseler",
       "ftrClicks": "Antall trykk på registreringsknapp",
       "exportTitle": "Eksporter statistikk og historikk",
@@ -116,11 +116,11 @@
   },
   "mushroomStatus": {
     "PSILOCYBIN": "Fleinsopp",
-    "NON_PSILOCYBIN": "Ikke Fleinsopp",
+    "NON_PSILOCYBIN": "Ikke fleinsopp",
     "TOXIC": "Giftig",
     "UNKNOWN": "Ukjent",
     "UNIDENTIFIABLE": "Uidentifiserbar",
-    "NOT_PROCESSED": "Ikke Behandlet",
+    "NOT_PROCESSED": "Ikke behandlet",
     "BAD_PICTURES": "Dårlige bilder"
   },
   "mushroomPopup": {
@@ -135,7 +135,7 @@
     "introBullet3": "Du skal skrive en kort kommentar om funnet ditt.",
     "introBullet4": "Etter innsending får du en referansekode for å følge med på rapporten.",
     "introBullet5": "En ekte ekspert vurderer innsendingen og sender deg svar.",
-    "startButton": "Jeg forstår - Start",
+    "startButton": "Jeg forstår - start",
     "title": "Send inn en soppforespørsel",
     "upload": "Last opp bilde",
     "changeUpload": "Endre bilde",
@@ -146,7 +146,7 @@
     "hintTitle": "Tips",
     "referenceHint": "Bruk denne koden for å finne innsendingen din senere:",
     "thankYou": "Takk!",
-    "thankYouHint": "Du får svar så snart en ekspert har sett på bildene dine. Du kan også sjekke med en gang ved å gå til \"Se Svar\" i sidemenyen og skrive inn referansekoden din.",
+    "thankYouHint": "Du får svar så snart en ekspert har sett på bildene dine. Du kan også sjekke med en gang ved å gå til \"Se svar\" i sidemenyen og skrive inn referansekoden din.",
     "toFront": "Gå til forsiden",
     "mushroom": "Sopp",
     "noMushrooms": "Ingen sopper lagt til ennå.",
@@ -166,7 +166,7 @@
     "sending": "Sender inn...",
     "adminOnline": "Det er {count} soppeksperter pålogget nå",
     "noAdminsOnline": "Det er ingen soppeksperter pålogget akkurat nå",
-    "goToChat": "Gå til Chat",
+    "goToChat": "Gå til chat",
     "steps": [
       {
         "title": "Trykk på opplastingsknappen under for å legge til din første sopp",
@@ -196,7 +196,7 @@
     "nextFromQueue": "Hent neste fra køen",
     "allRequests": "Alle forespørsler",
     "statistics": "Statistikk",
-    "completeRequest": "Fulfør forespørsel",
+    "completeRequest": "Fullfør forespørsel",
     "putBackIntoQueue": "Legg tilbake i køen",
     "placeOnHold": "Sett på vent",
     "admins": "Administratorer",
@@ -208,7 +208,7 @@
     "chat": "Min forespørsel",
     "home": "Hjem",
     "newRequest": "Ny forespørsel",
-    "login": "Se Svar",
+    "login": "Se svar",
     "membership": "Bli medlem",
     "support": "Hjelp",
     "onlineAdmins": "Administratorer pålogget",
@@ -224,18 +224,17 @@
     "title": "Sopp",
     "status": {
       "psilocybin": "Fleinsopp",
-      "non-psilocybin": "Ikke Fleinsopp",
+      "non-psilocybin": "Ikke fleinsopp",
       "toxic": "Giftig",
       "unknown": "Ukjent",
       "unidentifiable": "Uidentifiserbar",
-      "not-processed": "Ikke Behandlet",
+      "not-processed": "Ikke behandlet",
       "bad-pictures": "Dårlige bilder"
     }
   },
   "loginUser": {
     "heading": "Skriv inn referansekoden din",
     "refLabel": "Referansekode",
-    "placeholder": "f.eks. 8f3a-1290-abcd...",
     "button": "Logg inn",
     "errorEmpty": "Vennligst skriv inn referansekoden din.",
     "errorInvalid": "Ugyldig eller utløpt referansekode.",
@@ -246,12 +245,12 @@
   "home": {
     "description": "Usikker på om du har plukket fleinsopp? Send inn en gratis anonym forespørsel her:",
     "sendRequest": "Send forespørsel",
-    "becomeMember": "Bli Medlem",
+    "becomeMember": "Bli medlem",
     "getSupport": "få hjelp fra vår support",
     "or": "Eller"
   },
   "membership": {
-    "title": "Bli medlem - Støtt Foreningen for Tryggere Ruspolitikk!",
+    "title": "Bli medlem - støtt Foreningen for Tryggere Ruspolitikk!",
     "intro": "Vil du bidra til å holde Soppidentifikasjon.no i drift og hjelpe flere med trygg soppplukking? Som medlem støtter du vårt arbeid med å dekke driftskostnader og honorarer til våre soppsakkyndige.",
     "whyTitle": "Hvorfor bli medlem?",
     "why1": "<strong>Støtt driften:</strong> Bidra til vedlikehold av siden og vår gratis identifikasjonstjeneste.",
@@ -412,6 +411,3 @@
   }
 
 }
-
-
-

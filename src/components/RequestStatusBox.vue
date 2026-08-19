@@ -7,11 +7,11 @@
 
     <!-- Created/Updated row -->
     <div class="flex justify-between text-sm text-text1-faded">
-      <p><span class="font-semibold">Sent In:</span></p>
+      <p><span class="font-semibold">Sent in:</span></p>
       <p>{{ formatDate(request.createdAt) }}</p>
     </div>
     <div class="flex justify-between text-sm text-textAltFaded">
-      <p><span class="font-semibold">Last Updated:</span></p>
+      <p><span class="font-semibold">Last updated:</span></p>
       <p>{{ formatDate(request.updatedAt) }}</p>
     </div>
 
