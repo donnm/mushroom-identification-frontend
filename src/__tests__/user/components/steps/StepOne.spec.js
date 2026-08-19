@@ -138,4 +138,41 @@ describe('StepOne.vue', () => {
 
     expect(wrapper.find('[data-testid="add-mushroom-confirm-button"]').attributes('disabled')).toBeUndefined()
   })
+
+  it('shows a photo thumbnail per image in the mushroom list, not a filename', async () => {
+    vi.stubGlobal('createImageBitmap', vi.fn(() => Promise.resolve({ width: 800, height: 600 })))
+    vi.spyOn(HTMLCanvasElement.prototype, 'getContext').mockReturnValue({ drawImage: vi.fn() })
+    vi.spyOn(HTMLCanvasElement.prototype, 'toBlob').mockImplementation(function (cb) {
+      cb(new Blob(['fake-jpeg-bytes'], { type: 'image/jpeg' }))
+    })
+    vi.stubGlobal('URL', { ...URL, createObjectURL: vi.fn(() => 'blob:fake-preview-url'), revokeObjectURL: vi.fn() })
+
+    const wrapper = mount(StepOne, {
+      global: { components: { BaseButton } }
+    })
+    await flushPromises()
+
+    await wrapper.find('[data-testid="add-mushroom-button"]').trigger('click')
+
+    const file = new File(['x'], 'photo.jpg', { type: 'image/jpeg' })
+    const setFile = (input) => {
+      Object.defineProperty(input.element, 'files', { value: [file] })
+    }
+
+    for (const angle of ['top', 'side', 'under']) {
+      setFile(wrapper.find(`[data-testid="file-input-${angle}"]`))
+      await wrapper.find(`[data-testid="file-input-${angle}"]`).trigger('change')
+      await vi.runAllTimersAsync()
+      await flushPromises()
+    }
+
+    await wrapper.find('[data-testid="add-mushroom-confirm-button"]').trigger('click')
+    await flushPromises()
+
+    const mushroomItem = wrapper.find('[data-testid="mushroom-item"]')
+    const thumbnails = mushroomItem.findAll('img')
+    expect(thumbnails).toHaveLength(3)
+    thumbnails.forEach(img => expect(img.attributes('src')).toBe('blob:fake-preview-url'))
+    expect(mushroomItem.text()).not.toContain('.jpg')
+  })
 })

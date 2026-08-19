@@ -49,17 +49,13 @@
           {{ t('submit.mushroom') }} {{ mushroom.id }}
         </div>
         <div class="flex flex-wrap gap-2">
-          <div
-          v-for="(img, i) in mushroom.images"
-          :key="i"
-          class="bg-bg2 border border-border1 rounded px-3 py-1 text-xs text-text1 flex items-center"
-          >
-          <svg class="w-4 h-4 mr-1 text-button2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15.172 7l-6.586 6.586a2 2 0 002.828 2.828l6.586-6.586a2 2 0 00-2.828-2.828z"/>
-            <path stroke-linecap="round" stroke-linejoin="round" d="M16 5l3 3"/>
-          </svg>
-          {{ img.name }}
-          </div>
+          <img
+            v-for="(img, i) in mushroom.images"
+            :key="i"
+            :src="getImagePreviewUrl(img)"
+            :alt="img.name"
+            class="w-12 h-12 rounded object-cover border border-border1"
+          />
         </div>
         </div>
       </template>
@@ -288,7 +284,25 @@ function getNextAvailableId() {
   return id
 }
 
+// Thumbnails in the mushroom list read from a File's dataURL when it has one
+// (set for images restored from sessionStorage), otherwise from a blob URL
+// created lazily and cached on the File itself so it isn't recreated on every
+// render.
+function getImagePreviewUrl(img) {
+  if (img.dataURL) return img.dataURL
+  if (!img.previewUrl) img.previewUrl = URL.createObjectURL(img)
+  return img.previewUrl
+}
+
+function revokeImagePreviewUrls(images) {
+  for (const img of images) {
+    if (img.previewUrl) URL.revokeObjectURL(img.previewUrl)
+  }
+}
+
 function removeMushroom(id) {
+  const removed = mushrooms.value.find(m => m.id === id)
+  if (removed) revokeImagePreviewUrls(removed.images)
   mushrooms.value = mushrooms.value.filter(m => m.id !== id)
 }
 
@@ -305,8 +319,11 @@ async function handleAngleUpload(angleKey, event) {
   const file = event.target.files?.[0]
   if (!file) return
 
-  // Check file size before anything else
-  if (file.size > 10 * 1024 * 1024) {
+  // Check file size before anything else. This is the raw, pre-downscale source
+  // file - processImageFiles() will shrink it well below this regardless, so this
+  // is really just a guard against trying to load something absurd (e.g. a RAW
+  // file) into memory, not the limit users are expected to normally hit.
+  if (file.size > 50 * 1024 * 1024) {
     toast.error(t('errors.FileTooLarge'))
     event.target.value = null
     return
@@ -399,6 +416,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
+  for (const mushroom of mushrooms.value) revokeImagePreviewUrls(mushroom.images)
   comment.value = ''
   mushrooms.value = []
   sessionStorage.removeItem('submit_comment')

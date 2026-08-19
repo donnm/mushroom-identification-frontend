@@ -294,7 +294,7 @@
     "sendingUserRequest": "There was an error sending your request. Please try again.",
     "enteringChat": "There was an error entering the chat. Please try again.",
     "fetchingUserRequest": "There was an error fetching the user request. Please try again.",
-    "FileTooLarge": "The file is too large. Please upload a file smaller than 10 MB.",
+    "FileTooLarge": "The file is too large. Please upload a file smaller than 50 MB.",
     "loadAdmins": "There was an error loading the admins. Please try again later.",
     "deleteAdmin": "Failed to delete admin.",
     "invalidEmail": "Please enter a valid email address.",
