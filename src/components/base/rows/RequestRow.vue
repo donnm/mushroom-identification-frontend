@@ -4,8 +4,13 @@
     <p class="col-span-2 break-all">{{ item.userRequestId }}</p>
     <p class="col-span-2">{{ formatRelativeTime(item.createdAt, locale) }}</p>
     <p class="col-span-2">{{ formatRelativeTime(item.updatedAt, locale) }}</p>
-    <div class="col-span-1">
+    <div class="col-span-1 flex items-center gap-1">
       <RequestStatusBadge :status="item.status" />
+      <MessageCircleWarning
+        v-if="item.hasFollowUp"
+        class="w-4 h-4 text-danger shrink-0"
+        :title="t('request.hasFollowUp')"
+      />
     </div>
     <p class="col-span-1 text-center">{{ item.numberOfMushrooms }}</p>
     <div class="col-span-2">
@@ -29,7 +34,15 @@
     <p><span class="font-semibold">{{ $t('request.id') }}:</span> {{ item.userRequestId }}</p>
     <p><span class="font-semibold">{{ $t('request.submitted') }}:</span> {{ formatRelativeTime(item.createdAt, locale) }}</p>
     <p><span class="font-semibold">{{ $t('request.lastUpdated') }}:</span> {{ formatRelativeTime(item.updatedAt, locale) }}</p>
-    <p><span class="font-semibold">{{ $t('request.status') }}:</span> <RequestStatusBadge :status="item.status" /></p>
+    <p class="flex items-center gap-1">
+      <span class="font-semibold">{{ $t('request.status') }}:</span>
+      <RequestStatusBadge :status="item.status" />
+      <MessageCircleWarning
+        v-if="item.hasFollowUp"
+        class="w-4 h-4 text-danger shrink-0"
+        :title="t('request.hasFollowUp')"
+      />
+    </p>
     <p><span class="font-semibold">{{ $t('request.mushrooms') }}:</span> {{ item.numberOfMushrooms }}</p>
     <p><span class="font-semibold">{{ $t('request.decision') }}:</span> <MushroomDecisionBadge :mushroom-status-counts="item.mushroomStatusCounts" /></p>
     <p class="flex items-center gap-2">
@@ -49,6 +62,7 @@
 
 <script setup>
 import { computed } from 'vue'
+import { MessageCircleWarning } from 'lucide-vue-next'
 import RequestStatusBadge from "@/components/badges/RequestStatusBadge.vue";
 import MushroomDecisionBadge from "@/components/badges/MushroomDecisionBadge.vue";
 import { formatRelativeTime } from '@/utils/formatters'

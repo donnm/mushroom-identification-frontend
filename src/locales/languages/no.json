@@ -332,7 +332,8 @@
       "statusUpdated": "Statusen for forespørselen ble oppdatert.",
       "addedToQueue": "Forespørselen er lagt tilbake i køen.",
       "placedOnHold": "Forespørselen er satt på vent.",
-      "newInQueue": "En ny forespørsel ble lagt til i køen."
+      "newInQueue": "En ny forespørsel ble lagt til i køen.",
+      "followUp": "En bruker svarte på en forespørsel du fullførte."
     }
 
   },
@@ -385,6 +386,7 @@
     "owner": "Eier",
     "unassigned": "Ikke tildelt",
     "release": "Frigi",
+    "hasFollowUp": "Bruker svarte etter fullføring",
     "otherRequests": "Andre forespørsler",
     "statusFilter": {
       "all": "Alle",

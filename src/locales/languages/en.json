@@ -330,7 +330,8 @@
       "mushroomUpdated": "Your mushrooms have been updated by a reviewer.",
       "currentlyUnderReview": "A reviewer is currently evaluating your request. Go check it out!",
       "adminLeft": "The reviewer has left your request.",
-      "newInQueue": "A new request was added to the queue."
+      "newInQueue": "A new request was added to the queue.",
+      "followUp": "A user replied to a request you completed."
     },
     "system": {
       "maintenance": "The system is currently under maintenance.",
@@ -405,6 +406,7 @@
     "owner": "Owner",
     "unassigned": "Unassigned",
     "release": "Release",
+    "hasFollowUp": "User replied after completion",
     "otherRequests": "Other requests",
     "statusFilter": {
       "all": "All",

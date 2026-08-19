@@ -25,6 +25,15 @@
       {{ request.status.toLowerCase() }}
     </div>
 
+    <!-- Follow-up after completion -->
+    <div
+      v-if="request.hasFollowUp"
+      class="flex items-center gap-1 text-sm text-danger"
+    >
+      <MessageCircleWarning class="w-4 h-4 shrink-0" />
+      <span>{{ t('request.hasFollowUp') }}</span>
+    </div>
+
     <!-- Mushroom Basket Summary -->
     <div class="mt-4 space-y-2" v-if="request.basketSummaryBadges?.length">
       <BasketBadge
@@ -40,6 +49,7 @@
 <script setup>
 import { formatDate } from '../utils/formatters';
 import { useI18n } from 'vue-i18n';
+import { MessageCircleWarning } from 'lucide-vue-next';
 import BasketBadge from "@/components/badges/BasketBadge.vue";
 
 const { t } = useI18n();
