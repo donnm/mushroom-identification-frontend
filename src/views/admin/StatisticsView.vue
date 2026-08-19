@@ -63,7 +63,7 @@ const columns = [
   { label: t('request.status'), key: 'status', class: 'col-span-1', sortable: true },
   { label: t('request.mushrooms'), key: 'numberOfMushrooms', class: 'col-span-1', sortable: true },
   { label: t('request.decision'), key: 'mushroomDecision', class: 'col-span-2', sortable: true },
-  { label: t('request.owner'), key: 'username', class: 'col-span-2' }
+  { label: t('request.owner'), key: 'username', class: 'col-span-2', sortable: true }
 ]
 
 onMounted(fetchItems)

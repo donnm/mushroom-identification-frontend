@@ -33,6 +33,22 @@ describe('useFilteredRequestsTable', () => {
     expect(table.items.value.map(i => i.userRequestId)).toEqual(['b', 'c', 'a'])
   })
 
+  it('sorts by owner (username), grouping unassigned requests first', async () => {
+    getPaginatedRequests.mockResolvedValue({
+      content: [
+        { userRequestId: 'a', username: 'zoe' },
+        { userRequestId: 'b', username: null },
+        { userRequestId: 'c', username: 'alice' }
+      ]
+    })
+
+    const table = useFilteredRequestsTable()
+    await table.fetchItems()
+    table.toggleSort('username') // ascending
+
+    expect(table.items.value.map(i => i.userRequestId)).toEqual(['b', 'c', 'a'])
+  })
+
   it('toggleSort flips direction on repeated clicks of the same column', async () => {
     getPaginatedRequests.mockResolvedValue({
       content: [{ userRequestId: 'a' }, { userRequestId: 'b' }]
