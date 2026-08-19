@@ -44,7 +44,7 @@
         class="relative border border-border2 rounded-lg p-3 bg-bg1 mb-3 flex flex-col gap-2 shadow-sm hover:shadow-md transition"
         data-testid="mushroom-item"
         >
-        <XIcon class="w-4 h-4 text-text1-faded hover:text-button1-meta absolute top-2 right-2 cursor-pointer" tabindex="0" @click="removeMushroom(mushroom.id)" />
+        <XIcon class="w-4 h-4 text-text1-faded hover:text-danger absolute top-2 right-2 cursor-pointer" tabindex="0" @click="removeMushroom(mushroom.id)" />
         <div class="font-semibold text-text1 text-left mb-1">
           {{ t('submit.mushroom') }} {{ mushroom.id }}
         </div>
@@ -54,7 +54,7 @@
           :key="i"
           class="bg-bg2 border border-border1 rounded px-3 py-1 text-xs text-text1 flex items-center"
           >
-          <svg class="w-4 h-4 mr-1 text-button2-meta" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 mr-1 text-button2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15.172 7l-6.586 6.586a2 2 0 002.828 2.828l6.586-6.586a2 2 0 00-2.828-2.828z"/>
             <path stroke-linecap="round" stroke-linejoin="round" d="M16 5l3 3"/>
           </svg>
@@ -75,7 +75,7 @@
         @click="showMushroomPopup = true"
         data-testid="add-mushroom-button"
       >
-        <Upload class="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14" />
+        <MushroomAddIcon class="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14" />
       </BaseButton>
     </div>
 
@@ -132,7 +132,7 @@
             >
               <button
                 type="button"
-                class="text-xs underline cursor-pointer text-button2-meta focus:outline-none focus:ring"
+                class="text-xs underline cursor-pointer text-button2 focus:outline-none focus:ring"
                 @click="fileInputs[angle.key]?.click()"
                 :data-testid="`upload-button-${angle.key}`"
               >
@@ -147,7 +147,7 @@
               />
               <button
                 type="button"
-                class="text-[11px] underline cursor-pointer text-button2-meta focus:outline-none focus:ring"
+                class="text-[11px] underline cursor-pointer text-button2 focus:outline-none focus:ring"
                 @click="fileInputs[angle.key]?.click()"
                 :data-testid="`change-upload-button-${angle.key}`"
               >
@@ -216,8 +216,9 @@ import { useToast } from 'vue-toastification'
 import { useRouter, onBeforeRouteLeave } from 'vue-router'
 import { sendNewUserRequest } from '@/services/rest/userRequestService.js'
 import { processImageFiles } from '@/utils/imageUtils'
-import { XIcon, Upload } from 'lucide-vue-next'
+import { XIcon } from 'lucide-vue-next'
 import BaseButton from '@/components/base/BaseButton.vue'
+import MushroomAddIcon from '@/components/base/MushroomAddIcon.vue'
 
 const { t, tm } = useI18n()
 const toast = useToast()
