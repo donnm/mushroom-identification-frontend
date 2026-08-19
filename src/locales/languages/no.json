@@ -331,7 +331,8 @@
       "locked": "OBS! Denne forespørselen behandles allerede av en annen administrator. Du kan se på den, men ikke gjøre endringer.",
       "statusUpdated": "Statusen for forespørselen ble oppdatert.",
       "addedToQueue": "Forespørselen er lagt tilbake i køen.",
-      "placedOnHold": "Forespørselen er satt på vent."
+      "placedOnHold": "Forespørselen er satt på vent.",
+      "newInQueue": "En ny forespørsel ble lagt til i køen."
     }
 
   },

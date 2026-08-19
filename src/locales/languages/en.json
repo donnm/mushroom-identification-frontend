@@ -329,7 +329,8 @@
       "newChatMessage": "You have received a new message.",
       "mushroomUpdated": "Your mushrooms have been updated by a reviewer.",
       "currentlyUnderReview": "A reviewer is currently evaluating your request. Go check it out!",
-      "adminLeft": "The reviewer has left your request."
+      "adminLeft": "The reviewer has left your request.",
+      "newInQueue": "A new request was added to the queue."
     },
     "system": {
       "maintenance": "The system is currently under maintenance.",

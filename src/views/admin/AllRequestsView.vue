@@ -64,6 +64,7 @@ import BaseList from '@/components/base/BaseList.vue'
 import RequestRow from '@/components/base/rows/RequestRow.vue'
 import { getPaginatedRequests } from '@/services/rest/adminRequestService.js'
 import { useFilteredRequestsTable } from '@/composables/useFilteredRequestsTable.js'
+import { useAdminBroadcastStore } from '@/store/useAdminBroadcastStore.js'
 import router from "@/router/index.js"
 import { useI18n } from 'vue-i18n'
 
@@ -125,4 +126,13 @@ onMounted(() => {
 })
 
 watch(page1, fetchNewRequests)
+
+// Refetch the queue when a new request comes in, instead of requiring a manual
+// page refresh to see it.
+const adminBroadcastStore = useAdminBroadcastStore()
+watch(() => adminBroadcastStore.broadcastCounter, () => {
+  if (adminBroadcastStore.lastBroadcastType === 'NEW_REQUEST_IN_QUEUE') {
+    fetchNewRequests()
+  }
+})
 </script>
