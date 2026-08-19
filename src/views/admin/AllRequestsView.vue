@@ -13,7 +13,7 @@
           @item-click="handleClick"
       >
         <template #default="{ item }">
-          <RequestRow :item="item" />
+          <RequestRow :item="item" @release="handleRelease" />
         </template>
       </BaseList>
     </div>
@@ -48,7 +48,7 @@
           @item-click="handleClick"
       >
         <template #default="{ item }">
-          <RequestRow :item="item" />
+          <RequestRow :item="item" @release="handleRelease" />
         </template>
       </BaseList>
     </div>
@@ -83,16 +83,21 @@ const {
   sortKey,
   sortDirection,
   fetchItems: fetchOtherRequests,
-  toggleSort
+  toggleSort,
+  releaseRequest
 } = useFilteredRequestsTable({ status: otherStatus, exclude: otherExclude })
 
 const makeColumns = (sortable) => [
-  { label: t('request.id'), key: 'userRequestId', class: 'col-span-3' },
-  { label: t('request.lastUpdated'), key: 'updatedAt', class: 'col-span-3', sortable },
-  { label: t('request.status'), key: 'status', class: 'col-span-2', sortable },
+  { label: t('request.id'), key: 'userRequestId', class: 'col-span-2' },
+  { label: t('request.submitted'), key: 'createdAt', class: 'col-span-2', sortable },
+  { label: t('request.lastUpdated'), key: 'updatedAt', class: 'col-span-2', sortable },
+  { label: t('request.status'), key: 'status', class: 'col-span-1', sortable },
   { label: t('request.mushrooms'), key: 'numberOfMushrooms', class: 'col-span-1', sortable },
-  { label: t('request.decision'), key: 'mushroomDecision', class: 'col-span-3' }
+  { label: t('request.decision'), key: 'mushroomDecision', class: 'col-span-2', sortable },
+  { label: t('request.owner'), key: 'username', class: 'col-span-2' }
 ]
+
+const handleRelease = (userRequestId) => releaseRequest(userRequestId)
 
 const newRequestColumns = computed(() => makeColumns(false))
 const otherRequestColumns = computed(() => makeColumns(true))

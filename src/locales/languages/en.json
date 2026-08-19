@@ -393,6 +393,7 @@
   },
   "request": {
     "id": "Request ID",
+    "submitted": "Submitted",
     "lastUpdated": "Last updated",
     "status": "Status",
     "mushrooms": "Mushrooms",
@@ -400,6 +401,9 @@
     "mushroomDecisionAllOf": "All {status}",
     "mushroomDecisionAndMore": "{status} and {count} more",
     "mushroomDecisionNone": "-",
+    "owner": "Owner",
+    "unassigned": "Unassigned",
+    "release": "Release",
     "otherRequests": "Other requests",
     "statusFilter": {
       "all": "All",

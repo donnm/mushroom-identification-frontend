@@ -75,6 +75,19 @@ export const getCountOfRequestFromStatus = async (status) => {
   }
 }
 
+export const releaseRequestAsSuperuser = async (userRequestId) => {
+  try {
+    const response = await axios.post(`/api/admin/requests/${userRequestId}/release`, null, {
+      headers: getAuthHeaders()
+    })
+    return response?.data || null
+  } catch (error) {
+    console.error(`Error releasing request ${userRequestId}:`, error)
+    useToast().error('Error releasing request')
+    return null
+  }
+}
+
 export const getNextRequestFromQueue = async () => {
   try {
     const response = await axios.get('/api/admin/requests/next', {

@@ -1,5 +1,6 @@
 import { ref, computed, watch } from 'vue'
-import { getPaginatedRequests } from '@/services/rest/adminRequestService.js'
+import { getPaginatedRequests, releaseRequestAsSuperuser } from '@/services/rest/adminRequestService.js'
+import { getMushroomDecisionInfo } from '@/utils/formatters.js'
 import { useToast } from 'vue-toastification'
 
 function currentYearBounds() {
@@ -16,6 +17,19 @@ function compareValues(a, b) {
   if (b == null) return 1
   if (typeof a === 'number' && typeof b === 'number') return a - b
   return String(a).localeCompare(String(b))
+}
+
+// mushroomDecision has no single backing field to sort by - it's a derived
+// summary of mushroomStatusCounts, so it needs its own sort value: items with
+// no decision yet sort first, then grouped by dominant status, largest first.
+function decisionSortValue(item) {
+  const info = getMushroomDecisionInfo(item.mushroomStatusCounts)
+  if (!info) return ''
+  return `${info.dominantStatus}:${String(info.dominantCount).padStart(10, '0')}`
+}
+
+function sortValueFor(item, key) {
+  return key === 'mushroomDecision' ? decisionSortValue(item) : item[key]
 }
 
 /**
@@ -62,7 +76,7 @@ export function useFilteredRequestsTable({ status = ref(null), exclude = ref(fal
   const items = computed(() => {
     const sorted = [...rawItems.value]
     sorted.sort((a, b) => {
-      const result = compareValues(a[sortKey.value], b[sortKey.value])
+      const result = compareValues(sortValueFor(a, sortKey.value), sortValueFor(b, sortKey.value))
       return sortDirection.value === 'asc' ? result : -result
     })
     return sorted
@@ -77,7 +91,12 @@ export function useFilteredRequestsTable({ status = ref(null), exclude = ref(fal
     }
   }
 
+  const releaseRequest = async (userRequestId) => {
+    const result = await releaseRequestAsSuperuser(userRequestId)
+    if (result !== null) await fetchItems()
+  }
+
   watch([status, exclude, dateFrom, dateTo], fetchItems)
 
-  return { items, loading, dateFrom, dateTo, sortKey, sortDirection, fetchItems, toggleSort }
+  return { items, loading, dateFrom, dateTo, sortKey, sortDirection, fetchItems, toggleSort, releaseRequest }
 }

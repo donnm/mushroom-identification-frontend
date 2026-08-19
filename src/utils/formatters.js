@@ -9,7 +9,7 @@ export const formatDate = (date) => {
   });
 };
 
-const MUSHROOM_STATUS_KEY = {
+export const MUSHROOM_STATUS_KEY = {
   PSILOCYBIN: 'psilocybin',
   NON_PSILOCYBIN: 'non-psilocybin',
   TOXIC: 'toxic',
@@ -21,16 +21,15 @@ const MUSHROOM_STATUS_KEY = {
 const lowercaseFirst = (str) => str.charAt(0).toLowerCase() + str.slice(1)
 
 /**
- * Summarizes a request's mushroom status breakdown for the admin request tables,
- * e.g. "Psilocybin and 3 more" or "All psilocybin". Mushrooms that haven't been
- * given a decision yet (NOT_PROCESSED) don't count towards the summary; returns
- * null if none of the request's mushrooms have been decided on yet.
+ * Derives a request's dominant mushroom decision from its status breakdown, ignoring
+ * mushrooms that haven't been given a decision yet (NOT_PROCESSED). Used to both
+ * render (colour, label) and sort the decision column on the admin request tables.
  *
  * @param mushroomStatusCounts a map of MushroomStatus to count, as returned by the API
- * @param t the i18n translate function
- * @returns {string|null}
+ * @returns {{dominantStatus: string, dominantCount: number, totalDecided: number}|null}
+ *   null if none of the request's mushrooms have been decided on yet
  */
-export const formatMushroomDecisionSummary = (mushroomStatusCounts, t) => {
+export const getMushroomDecisionInfo = (mushroomStatusCounts) => {
   if (!mushroomStatusCounts) return null
 
   const decided = Object.entries(mushroomStatusCounts)
@@ -40,13 +39,29 @@ export const formatMushroomDecisionSummary = (mushroomStatusCounts, t) => {
   const totalDecided = decided.reduce((sum, [, count]) => sum + count, 0)
   if (totalDecided === 0) return null
 
-  const [topStatus, topCount] = decided[0]
-  const label = t(`mushroom.status.${MUSHROOM_STATUS_KEY[topStatus]}`)
+  const [dominantStatus, dominantCount] = decided[0]
+  return { dominantStatus, dominantCount, totalDecided }
+}
 
-  if (topCount === totalDecided) {
+/**
+ * Summarizes a request's mushroom status breakdown for the admin request tables,
+ * e.g. "Psilocybin and 3 more" or "All psilocybin".
+ *
+ * @param mushroomStatusCounts a map of MushroomStatus to count, as returned by the API
+ * @param t the i18n translate function
+ * @returns {string|null}
+ */
+export const formatMushroomDecisionSummary = (mushroomStatusCounts, t) => {
+  const info = getMushroomDecisionInfo(mushroomStatusCounts)
+  if (!info) return null
+
+  const { dominantStatus, dominantCount, totalDecided } = info
+  const label = t(`mushroom.status.${MUSHROOM_STATUS_KEY[dominantStatus]}`)
+
+  if (dominantCount === totalDecided) {
     return t('request.mushroomDecisionAllOf', { status: lowercaseFirst(label) })
   }
-  return t('request.mushroomDecisionAndMore', { status: label, count: totalDecided - topCount })
+  return t('request.mushroomDecisionAndMore', { status: label, count: totalDecided - dominantCount })
 }
 
 export const formatRelativeTime = (date, locale = navigator.language) => {

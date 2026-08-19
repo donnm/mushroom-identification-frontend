@@ -24,7 +24,7 @@
           @sort-change="toggleSort"
       >
         <template #default="{ item }">
-          <RequestRow :item="item" />
+          <RequestRow :item="item" @release="releaseRequest" />
         </template>
       </BaseList>
     </div>
@@ -52,15 +52,18 @@ const {
   sortKey,
   sortDirection,
   fetchItems,
-  toggleSort
+  toggleSort,
+  releaseRequest
 } = useFilteredRequestsTable({ status: ref('NEW'), exclude: ref(true) })
 
 const columns = [
-  { label: t('request.id'), key: 'userRequestId', class: 'col-span-3' },
-  { label: t('request.lastUpdated'), key: 'updatedAt', class: 'col-span-3', sortable: true },
-  { label: t('request.status'), key: 'status', class: 'col-span-2', sortable: true },
+  { label: t('request.id'), key: 'userRequestId', class: 'col-span-2' },
+  { label: t('request.submitted'), key: 'createdAt', class: 'col-span-2', sortable: true },
+  { label: t('request.lastUpdated'), key: 'updatedAt', class: 'col-span-2', sortable: true },
+  { label: t('request.status'), key: 'status', class: 'col-span-1', sortable: true },
   { label: t('request.mushrooms'), key: 'numberOfMushrooms', class: 'col-span-1', sortable: true },
-  { label: t('request.decision'), key: 'mushroomDecision', class: 'col-span-3' }
+  { label: t('request.decision'), key: 'mushroomDecision', class: 'col-span-2', sortable: true },
+  { label: t('request.owner'), key: 'username', class: 'col-span-2' }
 ]
 
 onMounted(fetchItems)

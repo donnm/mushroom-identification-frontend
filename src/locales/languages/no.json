@@ -373,6 +373,7 @@
   },
   "request": {
     "id": "Forespørsels-ID",
+    "submitted": "Innsendt",
     "lastUpdated": "Sist oppdatert",
     "status": "Status",
     "mushrooms": "Sopper",
@@ -380,6 +381,9 @@
     "mushroomDecisionAllOf": "Alle {status}",
     "mushroomDecisionAndMore": "{status} og {count} til",
     "mushroomDecisionNone": "-",
+    "owner": "Eier",
+    "unassigned": "Ikke tildelt",
+    "release": "Frigi",
     "otherRequests": "Andre forespørsler",
     "statusFilter": {
       "all": "Alle",
