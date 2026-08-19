@@ -396,13 +396,22 @@
     "lastUpdated": "Last updated",
     "status": "Status",
     "mushrooms": "Mushrooms",
+    "decision": "Decision",
+    "mushroomDecisionAllOf": "All {status}",
+    "mushroomDecisionAndMore": "{status} and {count} more",
+    "mushroomDecisionNone": "-",
     "otherRequests": "Other requests",
     "statusFilter": {
       "all": "All",
       "pending": "Pending",
       "inProgress": "In progress",
       "completed": "Completed"
-    }
+    },
+    "dateFilter": {
+      "from": "From",
+      "to": "To"
+    },
+    "sortBy": "Sort by"
   },
 
   "adminCreate": {

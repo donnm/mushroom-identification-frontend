@@ -6,13 +6,21 @@ export const getPaginatedRequests = async ({
   page = 0,
   size = 10,
   status = null,
-  exclude = false
+  exclude = false,
+  sort = null,
+  from = null,
+  to = null,
+  unpaged = false
 } = {}) => {
   try {
     const params = { page, size }
 
     if (status) params.status = status
     if (exclude) params.exclude = true
+    if (sort) params.sort = sort
+    if (from) params.from = from
+    if (to) params.to = to
+    if (unpaged) params.unpaged = true
 
     const response = await axios.get('/api/admin/requests', {
       params,

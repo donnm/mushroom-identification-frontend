@@ -376,13 +376,22 @@
     "lastUpdated": "Sist oppdatert",
     "status": "Status",
     "mushrooms": "Sopper",
+    "decision": "Avgjørelse",
+    "mushroomDecisionAllOf": "Alle {status}",
+    "mushroomDecisionAndMore": "{status} og {count} til",
+    "mushroomDecisionNone": "-",
     "otherRequests": "Andre forespørsler",
     "statusFilter": {
       "all": "Alle",
       "pending": "Avventer",
       "inProgress": "Under behandling",
       "completed": "Fullført"
-    }
+    },
+    "dateFilter": {
+      "from": "Fra",
+      "to": "Til"
+    },
+    "sortBy": "Sorter etter"
   },
   "adminCreate": {
     "title": "Opprett ny administrator",
